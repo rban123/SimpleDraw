@@ -56,7 +56,13 @@ while not crashed:
             if event.key == pygame.K_LALT:
                 alt = False
                 guide.color = (255,255,255)
-    
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            if event.button == 4:
+                brush.radius += 4 
+                guide.radius += 4
+            if event.button == 5:
+                brush.radius -= 4
+                guide.radius -= 4
         print(event)
     
     brush.center = (pygame.mouse.get_pos()[0], pygame.mouse.get_pos()[1])
