@@ -1,41 +1,15 @@
 import pygame
 from tkinter import messagebox
+from circle import Circle
 
 pygame.init()
 
 gameDisplay = pygame.display.set_mode((800,800))
- 
 overlay = pygame.Surface((800,800))
 
 pygame.display.set_caption("painting app")
 clock = pygame.time.Clock()
 crashed = False
-
-class circle():
-
-    def __init__(self, surface, color, center, radius, width=0):
-        self.surface = surface
-        self.color = color
-        self.center = center
-        self.radius = radius
-        self.width = width
-        
-    def update(self, surface, color, center, radius):
-        self.surface = surface
-        self.color = color
-        self.radius = radius
-
-    def update_center(self, center):
-        self.center = center
-
-    def update_radius(self, radius):
-        self.radius = radius 
-
-    def draw(self):
-        try:
-            pygame.draw.circle(self.surface, self.color, self.center, self.radius, self.width)    
-        except:
-            print("###########################\n####  Error: brush szie mustbe > 0 ####\n##########################")
 
 def detect_movement():
     x, y = pygame.mouse.get_rel()
@@ -44,8 +18,8 @@ def detect_movement():
     else:
         return False
 
-brush = circle(overlay, (0, 0, 255), (400,400), 50)
-guide = circle(gameDisplay, (255, 255, 255), (400,400), 50, 1)
+brush = Circle(overlay, (0, 0, 255), (400,400), 50)
+guide = Circle(gameDisplay, (255, 255, 255), (400,400), 50, 1)
 
 crashed = False
 
