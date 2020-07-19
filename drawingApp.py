@@ -57,12 +57,17 @@ while not crashed:
                 alt = False
                 guide.color = (255,255,255)
         if event.type == pygame.MOUSEBUTTONDOWN:
+            if event.button == 1:
+                drawMode = True
             if event.button == 4:
                 brush.radius += 4 
                 guide.radius += 4
             if event.button == 5:
                 brush.radius -= 4
                 guide.radius -= 4
+        if event.type == pygame.MOUSEBUTTONUP:
+            if event.button == 1:
+                drawMode = False
         print(event)
     
     brush.center = (pygame.mouse.get_pos()[0], pygame.mouse.get_pos()[1])
@@ -80,7 +85,7 @@ while not crashed:
         
     gameDisplay.blit(overlay, [0,0]) 
    
-    clock.tick(1000)
+    clock.tick(10000)
 
 pygame.quit()
 quit()
